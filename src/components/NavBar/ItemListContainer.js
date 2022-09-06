@@ -1,18 +1,14 @@
 import React from 'react'
+import { ListGroup } from 'react-bootstrap';
 
-const ItemListContainer = () => {
+function ItemListContainer(props) {
+    const listItems = props.productList.map((p,) =>
+        <ListGroup.Item key={p.id}>
+            {p.name}
+        </ListGroup.Item>);
+
     return (
-        <ul>
-            <li>
-                Producto 1
-            </li>
-            <li>
-                Producto 1
-            </li>
-            <li>
-                Producto 1
-            </li>
-        </ul>
+        <ListGroup variant="flush">{listItems}</ListGroup>
     )
 }
 
