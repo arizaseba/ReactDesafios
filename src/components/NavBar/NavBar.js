@@ -1,8 +1,7 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import CartWidget from './CartWidget';
 
-function NavBar(props) {
-
+function NavBar({ productList }) {
     return (
         <header>
             <Navbar bg="dark" variant="dark" expand="lg">
@@ -26,7 +25,7 @@ function NavBar(props) {
                             <Nav.Link href="#prices">Precios</Nav.Link>
                             <Nav.Link href="#contact">Contacto</Nav.Link>
                         </Nav>
-                        <CartWidget productList={props.productList} />
+                        <CartWidget productList={productList} />
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

@@ -3,13 +3,14 @@ import ItemCount from './components/NavBar/ItemCount';
 import NavBar from './components/NavBar/NavBar'
 import Producto from './components/Producto.js'
 
-function App() {
-  const productList = [];
-  const addItem = item => {
-    productList.push(new Producto(item, `Producto ${item}`))
-    console.log(productList);
-  };
+const productList = [];
+const addItem = item => {
+  productList.push(new Producto(item, `Producto ${item}`))
+  document.getElementById("cart_count").innerHTML = item;
+  console.log(productList);
+};
 
+function App() {
   return (
     <>
       <NavBar productList={productList} />
