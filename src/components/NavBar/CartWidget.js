@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { MdShoppingCart } from 'react-icons/md'
-import { Button, Offcanvas } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import ItemListContainer from './ItemListContainer';
 
-function CartWidget({ productList }) {
+function CartWidget({ cartList }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -11,17 +11,21 @@ function CartWidget({ productList }) {
     return (
         <>
             <Button onClick={handleShow} className="my-2 d-flex align-items-center">
-                <MdShoppingCart /> 
-                <div id="cart_count" className='ms-2'>{productList.length}</div>
+                <MdShoppingCart />
+                <div id="cart_count" className='ms-2'>{cartList.length}</div>
             </Button>
-            <Offcanvas placement="end" show={show} onHide={handleClose}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Carrito de Compras</Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                    <ItemListContainer productList={productList} />
-                </Offcanvas.Body>
-            </Offcanvas>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Carrito de Compras</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <ItemListContainer cartList={cartList} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary">Comprar</Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }
