@@ -1,19 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
-import ItemList from './components/ItemList';
+// import ItemList from './components/ItemList';
 import NavBar from './components/NavBar/NavBar'
-import Producto from './components/Producto.js'
-
-const productList = [];
-productList.push(new Producto(1, "Silla Gamer Weracer Mod Wemax", "Negro", 16, "silla1.jpg", "38.000"))
-productList.push(new Producto(2, "Silla Gamer Weracer Mod Wepower", "Blanco", 23, "silla2.jpg", "49.200"))
-productList.push(new Producto(3, "Silla Gamer Weracer Mod Wepower", "Rojo", 32, "silla3.jpg", "55.000"))
-console.log("productList: ", productList);
+import Producto from './components/app/Producto';
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 const cartList = [];
 const addItem = item => {
-  if (!cartList.find(p => p.item === item))
-    cartList.push({ item })
+  let prod = new Producto(item.id, item.title, item.color, item.stock, item.img, item.price);
+  if (!cartList.find(p => p.id === prod.id))
+    cartList.push(prod)
   document.getElementById("cart_count").innerHTML = cartList.length;
   console.log("cartList: ", cartList);
 };
@@ -25,8 +21,9 @@ function App() {
         <NavBar cartList={cartList} />
       </header>
       <Container className='my-4'>
-        <ItemList productList={productList} onAdd={addItem} />
+        {/* <ItemList onAdd={addItem} /> */}
         {/* <ItemCount stock={5} initial={1} onAdd={addItem} /> */}
+        <ItemDetailContainer onAdd={addItem} />
       </Container>
     </>
   );

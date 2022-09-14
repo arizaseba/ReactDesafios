@@ -1,9 +1,10 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap';
+import { getProducts } from './app/api';
 import Item from './Item';
 
-function ItemList({ productList: items, onAdd: addItem }) {
-    const listItems = items.map(p =>
+function ItemList({ onAdd: addItem }) {
+    const listItems = getProducts().map(p =>
         <Col key={p.id}>
             <Item item={p} onAdd={addItem} />
         </Col>

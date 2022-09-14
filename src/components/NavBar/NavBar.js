@@ -19,8 +19,8 @@ function NavBar({ cartList }) {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav >
                             <Nav.Link href="#home">Inicio</Nav.Link>
-                            <Nav.Link href="#about">Gamer</Nav.Link>
-                            <Nav.Link href="#services">Oficina</Nav.Link>
+                            <Nav.Link href="#gamer">Gamer</Nav.Link>
+                            <Nav.Link href="#office">Oficina</Nav.Link>
                             <Nav.Link href="#contact">Contacto</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
