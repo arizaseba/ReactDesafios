@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import { Button, Card, Modal } from 'react-bootstrap'
 import { MdAddShoppingCart } from 'react-icons/md';
+import { useParams } from 'react-router-dom';
+import { addToCart, getItem } from '../app/api';
 
-const ItemDetail = ({ item, onAdd }) => {
+const ItemDetail = () => {
+    const { id } = useParams();
+    const item = getItem(parseInt(id));
+
     const [count, setCount] = useState(item.stock);
 
     const [show, setShow] = useState(false);
@@ -26,13 +31,13 @@ const ItemDetail = ({ item, onAdd }) => {
                                 item.minStock(1);
                                 console.log(item.title + " - Stock: " + item.stock);
                                 // setItem(item + 1)
-                                onAdd(item);
+                                addToCart(item);
                             }
                             else {
                                 handleShow();
                             }
                         }}>
-                        <MdAddShoppingCart /> Agregar al carrito
+                        <MdAddShoppingCart /> Comprar
                     </Button>
                 </Card.Body>
             </Card>

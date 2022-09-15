@@ -1,14 +1,14 @@
 import { Container, Nav, Navbar, } from 'react-bootstrap';
 import CartWidget from './CartWidget';
 
-function NavBar({ cartList }) {
+function NavBar() {
     return (
         <header>
             <Navbar bg="dark" variant="dark" expand="md" className='shadow-sm'>
                 <Container>
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="/">
                         <img
-                            src='logow.svg'
+                            src='/logow.svg'
                             width='100'
                             height='35'
                             className='d-inline-block align-center'
@@ -18,13 +18,13 @@ function NavBar({ cartList }) {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav >
-                            <Nav.Link href="#home">Inicio</Nav.Link>
-                            <Nav.Link href="#gamer">Gamer</Nav.Link>
-                            <Nav.Link href="#office">Oficina</Nav.Link>
-                            <Nav.Link href="#contact">Contacto</Nav.Link>
+                            <Nav.Link href="/">Inicio</Nav.Link>
+                            <Nav.Link href="/category/gamer">Gamer</Nav.Link>
+                            <Nav.Link href="/category/office">Oficina</Nav.Link>
+                            <Nav.Link href="/contact">Contacto</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
-                    <CartWidget cartList={cartList} />
+                    <CartWidget />
                 </Container>
             </Navbar>
         </header>

@@ -1,154 +1,0 @@
-00:46:33	Melisa Primon:	se entienden que son repasos pero quizás a alguno le surge la misma duda que a algún compañero...
-00:48:13	[Tutor] Andrés Javier Nazzari:	sisi esta claro melisa!! En eso tenes razon
-00:56:14	Pablo Riveiro:	y el reject de ese ejemplo?
-00:56:19	[Tutor] Andrés Javier Nazzari:	es bastante intuitivo, con las palabras en ingles
-00:56:41	[Tutor] Andrés Javier Nazzari:	podes no ponerlo pablo
-00:56:45	Pablo Riveiro:	ok
-00:57:17	[Tutor] Joaquín Pontoriero:	https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise
-00:57:26	[Tutor] Joaquín Pontoriero:	Un poco de documentación sobre promesas
-00:58:09	[Tutor] Andrés Javier Nazzari:	igual estyo específicamente no es react en si, es JavaScript asique es como un repaso mega necesario
-01:00:55	Pablo Riveiro:	pero cada promesa tiene que tener los dos planteos .. result y reject
-01:00:58	Pablo Riveiro:	escritos juntos no ?
-01:01:08	Pablo Riveiro:	resolve si
-01:01:20	[Tutor]Enzo Agú:	SI Pablo
-01:01:49	[Tutor] Andrés Javier Nazzari:	siempre deberías contemplar el reject, por ejemplo si justo se perdió la conexión con el servidor o la base de datos, etc
-01:03:58	[Tutor] Jose Alvarez:	https://www.youtube.com/watch?v=frm0CHyeSbE&ab_channel=midulive
-01:04:06	[Tutor] Jose Alvarez:	un video de callbacks y promises que quizás les sirva
-01:05:26	marcelo fabian basualdo:	promesa la utilizaría para no seguir con el código hasta que cargue la lista de mis productos?
-01:05:36	[Tutor] Jose Alvarez:	Algo asi
-01:06:06	Julian Churio:	si se cumple la promesa por que dice no se ejecuta? no entendi esa parte
-01:06:27	[Tutor] Jose Alvarez:	Porque hay un reject
-01:06:32	Julian Churio:	ahi esta comentado // no se ejecuta
-01:06:41	[Tutor] Jose Alvarez:	Claro, es ese caso no se ejecuta el then
-01:06:50	Julian Churio:	aaaaa
-01:07:04	Jeremias Quinteros:	osea seria .then((res)=>console.log(res)
-01:07:04	Julian Churio:	ahi entendi gracias
-01:07:13	[Tutor] Jose Alvarez:	claro Jere
-01:07:35	Jeremias Quinteros:	y para el reject es .catch((rej)=> console.log(rej)
-01:07:41	Jeremias Quinteros:	???
-01:07:41	Alvaro Scarafia David:	genial
-01:07:42	[Tutor] Jose Alvarez:	un claro ejemplo de esto que dice el profe es cuando usan la pokeapi por ejemplo
-01:07:48	[Tutor]Enzo Agú:	.then ==> captura el resolve de la promesa..catch ==> captura todo tipo de error a través del reject..finally==> puede o no estar, ejecuta algo por defecto.
-01:08:12	Jeremias Quinteros:	Claaaaaaro enzo… yo lo había visto asi
-01:08:25	[Tutor]Enzo Agú:	el catch es mas efectivo
-01:08:29	[Tutor] Jose Alvarez:	Claro, el finally se ejecuta siempre
-01:08:29	[Tutor]Enzo Agú:	captura todo
-01:08:44	[Tutor]Enzo Agú:	si hay cualquier error
-01:09:23	[Tutor] Jose Alvarez:	.json()
-01:09:35	[Tutor] Jose Alvarez:	es cuando trae la data que solicitan
-01:09:51	[Tutor] Jose Alvarez:	eso también pueden hacerlo con un async await
-01:12:29	Jeremias Quinteros:	task.then((res)=>res.json()).then((data)=>console.log(data)).catch((err)=>console.log(err))
-01:12:35	Lucio Schiavoni:	tendriamos que poner los productos en un json?
-01:12:44	[Tutor] Jose Alvarez:	claro Lucio
-01:13:51	Alvaro Scarafia David:	como es la pagina ?
-01:14:19	Profesor Coderhouse:	https://jsbin.com/?html,output
-01:14:57	Jeremias Quinteros:	alguien puede mandar lo quue hay que hacer?? onda la actividad
-01:15:26	Profesor Coderhouse:	https://i.imgur.com/nF03fG6.png
-01:15:35	Jeremias Quinteros:	gracias
-01:17:32	Valentino Geronzi:	osea lo datos los sacamos de un array como dice ahi? o de un JSON
-01:17:43	[Tutor] Andrés Javier Nazzari:	como quieras
-01:17:45	[Tutor] Andrés Javier Nazzari:	da igual
-01:27:00	Valentino Geronzi:	https://gyazo.com/4566f2ab4dd090a715043871f03370cb
-01:27:06	Valentino Geronzi:	yo hice eso nose si esta bien
-01:28:15	Angel Valdez Made:	array = [  { id: 1, name: "remera", description: "string", stock: 3 },  { id: 2, name: "pantalon", description: "string", stock: 5 },  { id: 3, name: "jeans", description: "string", stock: 7 }]const task = new Promise ((resolve,reject)=>{  resolve(true)});task.then(result =>{  console.log(array)})
-01:28:25	Valentino Geronzi:	ah okok
-01:29:02	Jeremias Quinteros:	profe
-01:29:10	Jeremias Quinteros:	aca esta el mio
-01:29:12	Jeremias Quinteros:	const promesa=new Promise((resolve, reject)=>{    resolve([    {producto:"banana",    precio:500,    marca:"Tutuca"    },    {producto:"Pizza",    precio:300,    marca:"Molto"            },    {producto:"Lomito",    precio:900,    marca:"Betos"    }]);    reject("NO se encontraron productos")  })    setTimeout(()=>{    promesa    .then((res)=>console.log(res))    .catch((rej)=>console.log(rej))  },3000)
-01:35:56	Alvaro Scarafia David:	quedo claro
-01:38:05	[Tutor] Joaquín Pontoriero:	Asistencia pasada chicos! Recuerden tener en Zoom el mismo nombre que utilizan en la plataforma para que no haya problemas al tomarles el presente 🤸‍♂️
-01:38:57	Julián Debrabandere:	Juan Manuel Pereyra? Lautaro Renzini?
-01:47:01	Mariano Quetglas:	si
-01:47:04	felipe campagnoli:	genial
-01:47:07	Jeremias Quinteros:	podrá mostrar como se ve
-01:47:24	Jeremias Quinteros:	ondam en la consola?
-01:48:42	Jeremias Quinteros:	puso edat
-01:48:58	Jeremias Quinteros:	osea
-01:49:00	[Tutor]Enzo Agú:	jajajja
-01:49:02	Jeremias Quinteros:	onda* jjaaj
-01:49:17	[Tutor]Enzo Agú:	que se vea en la consola solamente
-01:49:56	Jeremias Quinteros:	sisii
-01:50:21	Jeremias Quinteros:	y en el objeto puso "edat", por las dudas digo jeje perdón la intensidad
-01:52:05	Alvaro Scarafia David:	jajaaja
-01:52:07	Jeremias Quinteros:	jajajjaj
-01:52:08	Martina Peker:	ajjajaja
-01:53:58	Alvaro Scarafia David:	genial
-01:56:58	Alvaro Scarafia David:	es como un id ?
-02:04:26	Nicolas Quinteros:	pusiste cosnt
-02:04:26	[Tutor]Enzo Agú:	El ItemListContainer.js sería el componente contenedor con la lógica de traer los productos, el ItemList.js recibe los productos por props y se los pasa al Ítem.js para que los renderice, que sería el componente de la vista
-02:05:13	[Tutor]Enzo Agú:	El ItemListContainer ya lo tienen hecho, ahora faltarían los otro dos
-02:05:16	[Tutor] Joaquín Pontoriero:	Si se les hace un poco abstracta la organización del proyecto intenten esquematizar la idea en papel para no trabajar tanto on the fly
-02:05:43	[Tutor]Enzo Agú:	Va a haber after de esto igualmente chicos
-02:05:43	[Tutor] Joaquín Pontoriero:	Una vez tengan organizado la distribución y relación de componentes, lo llevan al código
-02:06:19	[Tutor]Enzo Agú:	vamos a estar avisando por el chat de la comisión
-02:06:19	Francisco Danelon:	yo lo que hago es crear dentro de componentes, distintas carpetas y dentro sus .jsx y .css. Es buena practica?
-02:06:55	[Tutor] Joaquín Pontoriero:	Si Fran, está perfecto de esa manera
-02:07:38	Francisco Danelon:	buenisimo, entonces el ItemList tendria que ir dentro de la carpeta ItemListContainer no Joaquin?
-02:08:09	[Tutor] Joaquín Pontoriero:	Si fran
-02:08:26	Francisco Danelon:	perfecto gracias
-02:08:27	[Tutor] Joaquín Pontoriero:	Para seguir el esquema de organización que venis llevando vos está bien de esa forma
-02:08:52	[Tutor]Enzo Agú:	lo mejor sería que los componentes contenedores de lógica estén en un carpeta que podría llamarse "containers"
-02:09:07	[Tutor]Enzo Agú:	y los demás en la carpeta "componentes"
-02:10:04	[Tutor]Enzo Agú:	dentro de componentes cada carpeta con cada componente específico, ejemplo NavBar, ItemList, Cartwidget,etc..
-02:10:14	[Tutor]Enzo Agú:	es una  forma
-02:10:31	Angel Valdez Made:	Consulta, en el ItemList, iria nuestro array de productos no?
-02:10:57	felipe campagnoli:	task.then((articulos) => {        console.log(articulos);        useEffect(() => {          setArt(articulos);        });        }).catch(() => {        console.log("Task error");      });
-02:11:08	[Tutor]Enzo Agú:	no Angel, podría estar en otro archivo que podría llamarse "data.js"
-02:11:14	felipe campagnoli:	me aparece que no puedo usar el useEfect dentro del callback
-02:11:19	Valentino Geronzi:	se me corto el internet :(
-02:11:26	Valentino Geronzi:	recien vuelvo que paso?
-02:11:27	[Tutor]Enzo Agú:	y traerlo al ItemListContainer
-02:13:09	Valentino Geronzi:	no se ve
-02:13:15	Profesor Coderhouse:	https://i.imgur.com/9xBGv16.png
-02:13:42	Valentino Geronzi:	ok
-02:13:54	felipe campagnoli:	una pregunta , me aparece que no puedo usar el useEffect dentro de un callBack
-02:15:01	felipe campagnoli:	no entendí, no lo puedo usar dentro de un componente=
-02:15:38	Pablo Riveiro:	ItemListContainer ya se había usado la entrega pasada para otra cosa
-02:15:56	[Tutor]Julián Debrabandere:	useEffect iria siempre por fuera de toda función
-02:16:01	[Tutor]Enzo Agú:	hay que usarlo de nuevo Pablo
-02:16:11	Pablo Riveiro:	ok
-02:16:18	Pablo Riveiro:	es que tiene otras cosas dentro
-02:16:39	Pablo Riveiro:	ya veremos como queda
-02:16:50	[Tutor]Enzo Agú:	tenes que incorporarle la lógica de traer los productos
-02:17:59	felipe campagnoli:	gracias
-02:19:21	[Tutor]Julián Debrabandere:	Chicos! Les parece si organizamos una afterclass para mañana?
-02:19:32	Guillermina Bousoño:	Si!
-02:19:38	Franco Carra:	sii
-02:19:46	Magali Zapata:	Siisi
-02:19:57	Alvaro Scarafia David:	si porfas
-02:20:01	Angel Valdez Made:	Si, no entiendo nada, estoy muy perdido
-02:20:01	Miguel Bauducco:	si
-02:20:16	[Tutor]Julián Debrabandere:	Es un tema difícil de entender a la primera
-02:20:18	[Tutor]Julián Debrabandere:	así que tranqui
-02:20:23	Angel Valdez Made:	😅
-02:20:26	[Tutor]Julián Debrabandere:	Podemos hacerlo a las 11 si puede la mayoria
-02:20:30	Alvaro Scarafia David:	si
-02:20:31	Miguel Bauducco:	si juli
-02:20:41	Eduardo Ezequiel Verón:	si
-02:20:46	Patricio Silverii:	sii re
-02:22:10	Valentino Geronzi:	podrias explicar como es lo del useEffect con las promesas? porfavor
-02:22:15	Valentino Geronzi:	eso no me quedo claro
-02:22:27	Valentino Geronzi:	nose si lo mostraste porque se me fue el internet :(
-02:25:40	[Tutor]Julián Debrabandere:	Chicos! el link de zoom lo comparto mañana 15 minutos antes de arrancar la after
-02:26:17	[Tutor]Julián Debrabandere:	Mañana viernes 02/09 a las 11am - Afterclass de Promises
-02:26:52	Pablo Riveiro:	el error salía antes porque se usaba un  useState
-02:26:53	Pablo Riveiro:	creo
-02:28:08	[Tutor]Enzo Agú:	Dentro del useEffect va el llamado a la promesa.Este hook tiene un  efecto de montaje que no bloquea el rendering de la aplicación, entonces los llamados a apis externas que haremos en un futuro también van a estar ahí, porque tiene un efecto de montaje luego de que la aplicación levanta (es decir luego del return). Si hubiera errores en el llamado de la promesa lo veríamos a través del reject, pero al estar dentro del useEffect no bloquea nuestra aplicación.
-02:29:12	felipe campagnoli:	podrias mostrar la importación del archivo api?
-02:29:18	Valentino Geronzi:	si ahora va mejor
-02:40:04	[Tutor]Enzo Agú:	, [] }
-02:41:26	[Tutor]Julián Debrabandere:	:(
-02:41:27	Luz Arnao:	gracias
-02:41:36	Luz Arnao:	feliz finde
-02:41:41	Franco Ezequiel Soliz Pereyra:	Nos vemos profeee
-02:41:41	[Tutor] Andrés Javier Nazzari:	cualquier cosa hablamos chicos
-02:41:41	Mariano Quetglas:	chau buen finde
-02:41:41	[Tutor]Enzo Agú:	buen finde gente 🙋‍♂️
-02:41:42	Franco Ezequiel Soliz Pereyra:	buen finde
-02:41:43	[Tutor] Andrés Javier Nazzari:	buen finde!!
-02:41:44	[Tutor] Joaquín Pontoriero:	Nos estamos viendo chicos!
-02:41:47	Micaela Torres:	chau
-02:41:49	Pablo Javier Frank Gonzalez:	buen finde
-02:41:49	[Tutor]Julián Debrabandere:	Nos vemos mañana chicos!!
-02:41:53	Tomas Yadevito:	buen fince
-02:41:56	Eduardo Ezequiel Verón:	buen finde
