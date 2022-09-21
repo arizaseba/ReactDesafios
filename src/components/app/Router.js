@@ -12,8 +12,8 @@ const Router = () => (
         <Routes>
             <Route element={<Layout />}>
                 <Route index element={<Home />} />
-                <Route path="/category/gamer" element={<Gamer />} />
-                <Route path="/category/office" element={<Office />} />
+                <Route path="/category/:gamer" element={<Gamer />} />
+                <Route path="/category/:office" element={<Office />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/item/:id" element={<ItemDetail />} />
                 <Route path="*" element={<Error />} />

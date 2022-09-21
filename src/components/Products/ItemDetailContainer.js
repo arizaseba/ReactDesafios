@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Spinner } from 'react-bootstrap';
 import { getItem, getProducts } from './app/api';
 import ItemDetail from './Products/ItemDetail'
+import { PulseLoader } from 'react-spinners';
 
 const ItemDetailContainer = ({ onAdd: addItem }) => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [productos, setProductos] = useState(null);
 
     useEffect(() => {
@@ -12,13 +12,13 @@ const ItemDetailContainer = ({ onAdd: addItem }) => {
             .then((response) => response)
             .then((data) => {
                 setProductos(data);
-                setIsLoading(false);
+                setLoading(false);
             });
     }, []);
 
-    if (isLoading) {
+    if (loading) {
         return (
-            <Spinner animation="border" />
+            <PulseLoader className="position-absolute top-50 start-50 translate-middle" color="#212529"/>
         );
     }
     else {

@@ -1,5 +1,5 @@
 export default class Producto {
-    constructor(id, title, color, stock, img, price, desc) {
+    constructor(id, title, color, stock, img, price, desc, category) {
         this.id = id
         this.title = title
         this.color = color
@@ -7,6 +7,7 @@ export default class Producto {
         this.img = img
         this.price = price
         this.desc = desc
+        this.category = category
     }
 
     minStock(cantidad) {

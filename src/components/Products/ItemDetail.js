@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Button, Card, Modal } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import { addToCart, getItem } from '../app/api';
+import '../../css/ItemDetail.css';
 
 const ItemDetail = () => {
     const { id } = useParams();
@@ -14,17 +15,31 @@ const ItemDetail = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const descItem = item.desc.map((desc, ix) => <li key={ix}>{desc}</li>)
+
+    const [image, setImage] = useState(item.img[0]);
+
     return (
         <>
-            <Card className='d-flex flex-row align-items-center my-3'>
-                <Card.Img variant="top" src={item.img} className="w-25" />
-                <Card.Body>
-                    <Card.Title>{item.title}</Card.Title>
-                    <Card.Text className='display-6'>$ {item.price}</Card.Text>
-                    <Card.Text>Descripción: {item.desc}</Card.Text>
-                    <Card.Text>Color: {item.color}</Card.Text>
-                    <Card.Text>Stock: {item.stock}</Card.Text>
-                    <Button className='text-center'
+            <div className="details border rounded-4 shadow-lg">
+                <div className="big-img">
+                    <img src={image.src} alt={image.alt} />
+                </div>
+                <div className="box">
+                    <div className="row">
+                        <h2>{item.title}</h2>
+                        <h3 className="display-4">$ {parseFloat(item.price).toLocaleString()}</h3>
+                    </div>
+                    <p>Color: {item.color}</p>
+                    <p>Stock: {item.stock}</p>
+                    Detalle: <ul className=''>{descItem}</ul>
+
+                    <div className="thumb">
+                        {item.img.map((img, ix) => (
+                            <img key={ix} src={img.src} alt={img.alt} onClick={() => setImage(img)}></img>
+                        ))}
+                    </div>
+                    <Button className='text-center mt-2'
                         onClick={() => {
                             if (item.stock > 0) {
                                 setCount(count - 1);
@@ -37,10 +52,10 @@ const ItemDetail = () => {
                                 handleShow();
                             }
                         }}>
-                        <MdAddShoppingCart /> Comprar
+                        <MdAddShoppingCart /> Agregar al carrito
                     </Button>
-                </Card.Body>
-            </Card>
+                </div>
+            </div>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
