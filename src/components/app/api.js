@@ -1,4 +1,6 @@
 import Producto from "./Producto";
+import { collection, getDocs, query, doc, getDoc, addDoc, deleteDoc, updateDoc, where } from "firebase/firestore";
+import { db } from './firebase';
 
 const productList = [];
 productList.push(new Producto(
@@ -251,8 +253,8 @@ productList.push(new Producto(
 export const getProducts = new Promise((resolve) =>
     setTimeout(() => {
         resolve(productList)
-        console.log(productList)
-    }, 2000)
+        // console.log(productList)
+    }, 1500)
 );
 
 export const getItem = (id) => {
@@ -267,9 +269,66 @@ export const getCartList = new Promise((resolve) =>
     }, 1500)
 );
 
-export const addToCart = item => {
-    let prod = new Producto(item.id, item.title, item.color, item.stock, item.img, item.price);
-    cartList.push(prod)
+export const addToCart = (item, cantidad) => {
+    // id, title, color, stock, img, price, desc, category
+    let prod = new Producto(item.id, item.title, item.color, item.stock, item.img, item.price, item.desc, item.category);
+    let prodCart = cartList.find(s => s.id === item.id)
+    if (prodCart) {
+        prodCart.cantidad += cantidad
+    }
+    else {
+        prod.cantidad = cantidad
+        cartList.push(prod)
+    }
     document.getElementById("cart_count").innerHTML = cartList.length;
     console.log("cartList: ", cartList);
 };
+
+
+
+//////////////// Firebase ////////////////
+// CREATE ////////////////
+export const createItem = async (obj) => {
+    const colRef = collection(db, 'Productos');
+    const data = await addDoc(colRef, obj);
+    return data.id;
+}
+
+// UPDATE ////////////////
+export const updateItem = async (id, obj) => {
+    const colRef = collection(db, 'Productos');
+    await updateDoc(doc(colRef, id), obj)
+}
+
+// READ ////////////////
+export const getItems = async () => {
+    const colRef = collection(db, 'Productos');
+    const result = await getDocs(query(colRef));
+    return getArrayFromCollection(result);
+}
+
+// READ WITH WHERE ////////////////
+// Tener en cuenta que el tipo de dato de la condición debe coincidir con el tipo de dato que hay en Firebase o no obtendré un dato de respuesta
+export const getItemsByCategory = async (value) => {
+    const colRef = collection(db, 'Productos');
+    const result = await getDocs(query(colRef, where('categoryId', '==', value)));
+    return getArrayFromCollection(result);
+}
+
+export const getItemById = async (id) => {
+    const colRef = collection(db, 'Productos');
+    const result = await getDoc(doc(colRef, id));
+    return result.data();
+}
+
+// DELETE ////////////////
+export const deleteItem = async (id) => {
+    const colRef = collection(db, 'Productos');
+    await deleteDoc(doc(colRef, id));
+}
+
+const getArrayFromCollection = (collection) => {
+    return collection.docs.map(doc => {
+        return { ...doc.data(), id: doc.id };
+    });
+}

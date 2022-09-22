@@ -26,6 +26,8 @@ function ItemList({ addItem, category }) {
         );
     }
     else {
+        // console.log("Categoria: " + category)
+        // console.log(productos);
         const listItems = productos.map(p =>
             <Col key={p.id}>
                 <Item item={p} onAdd={addItem} />

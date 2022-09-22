@@ -2,12 +2,12 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import ItemList from '../components/Products/ItemList'
 
-const Gamer = () => {
-    const { gamer } = useParams();
+const Category = () => {
+    const { category } = useParams();
 
     return (
-        <ItemList category={gamer} />
+        <ItemList category={category} />
     )
 }
 
-export default Gamer
+export default Category
