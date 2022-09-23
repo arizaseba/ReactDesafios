@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Toast, ToastContainer } from 'react-bootstrap'
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import { addToCart, getItem } from '../app/api';
@@ -12,9 +12,13 @@ const ItemDetail = () => {
 
     const [stock, setStock] = useState(item.stock);
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showMsg, setShowMsg] = useState(false);
+    const closeMsg = () => setShowMsg(false);
+    const openMsg = () => setShowMsg(true);
+
+    const [showToast, setShowToast] = useState(false);
+    const closeToast = () => setShowToast(false);
+    const openToast = () => setShowToast(true);
 
     const descItem = item.desc.map((desc, ix) => <li key={ix}>{desc}</li>)
 
@@ -38,7 +42,7 @@ const ItemDetail = () => {
 
                     <div className="thumb">
                         {item.img.map((img, ix) => (
-                            <img key={ix} src={img.src} alt={img.alt} onClick={() => setImage(img)}></img>
+                            <img className={image.src === img.src ? "active" : ""} key={ix} src={img.src} alt={img.alt} onMouseOver={() => setImage(img)}></img>
                         ))}
                     </div>
                     <ItemCount item={item} count={count} setCount={setCount} />
@@ -49,27 +53,38 @@ const ItemDetail = () => {
                                 item.minStock(count);
                                 console.log(item.title + " - Stock: " + item.stock);
                                 addToCart(item, count);
+                                openToast();
                             }
                             else {
-                                handleShow();
+                                openMsg();
                             }
-                        }}>
+                        }}                        >
                         <MdAddShoppingCart /> Agregar al carrito
                     </Button>
                 </div>
             </div>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showMsg} onHide={closeMsg}>
                 <Modal.Header closeButton>
                     <Modal.Title>{item.title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>Lo siento, la cantidad a comprar debe ser menor que el stock del artículo</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={closeMsg}>
                         Cerrar
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+
+            <ToastContainer className="p-3" position="top-end" containerPosition="fixed">
+                <Toast bg='light' animation onClose={() => closeToast(false)} show={showToast} delay={3000} autohide>
+                    <Toast.Header closeButton={true}>
+                        <strong className="me-auto text-uppercase">{item.title}</strong>
+                    </Toast.Header>
+                    <Toast.Body>¡Producto agregado al carrito de compras!</Toast.Body>
+                </Toast>
+            </ToastContainer>
         </>
     )
 }

@@ -5,6 +5,7 @@ import Layout from './Layout';
 import Error from '../../pages/Error';
 import ItemDetail from '../Products/ItemDetail';
 import Category from '../../pages/Category';
+import CartPage from '../../pages/CartPage';
 
 const Router = () => (
     <BrowserRouter>
@@ -14,6 +15,7 @@ const Router = () => (
                 <Route path="/category/:category" element={<Category />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/item/:id" element={<ItemDetail />} />
+                <Route path="/cart" element={<CartPage />} />
                 <Route path="*" element={<Error />} />
             </Route>
         </Routes>

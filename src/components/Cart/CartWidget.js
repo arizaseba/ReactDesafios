@@ -22,12 +22,10 @@ function CartWidget() {
         <>
             <Button onClick={handleShow} className="my-2 d-flex align-items-center">
                 <MdShoppingCart />
-                <div id="cart_count" className='ms-2'>
-                    {cartList && cartList.length}
-                </div>
+                <div id="cart_count" className="ms-2">{cartList && cartList.length}</div>
             </Button>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal size="lg" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Carrito de Compras</Modal.Title>
                 </Modal.Header>
@@ -35,7 +33,7 @@ function CartWidget() {
                     <ItemListContainer cartList={cartList} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary">Comprar</Button>
+                    <Button className={cartList.length > 0 ? "" : "d-none"} href="/cart" variant="primary">Comprar</Button>
                 </Modal.Footer>
             </Modal>
         </>

@@ -4,7 +4,7 @@ import { db } from './firebase';
 
 const productList = [];
 productList.push(new Producto(
-    1, "Silla Gamer Weracer Mod Wemax", "Negro", 16,
+    1, "Silla Gamer Weracer Wemax", "Negro", 16,
     [
         {
             src: "/img/gamer/weracer-wemax/weracer-wemax_1.jpg",
@@ -35,7 +35,7 @@ productList.push(new Producto(
     ], "Gamer")
 );
 productList.push(new Producto(
-    2, "Silla Weracer Mod Wepower", "Negro", 17,
+    2, "Silla Weracer Wepower", "Negro", 17,
     [
         {
             src: "/img/gamer/weracer-wepower/weracer-wepower_1.jpg",
@@ -66,7 +66,7 @@ productList.push(new Producto(
     ], "Gamer")
 );
 productList.push(new Producto(
-    3, "Silla Weracer Mod Wepower Blanca", "Blanco", 13,
+    3, "Silla Weracer Wepower Blanca", "Blanco", 13,
     [
         {
             src: "/img/gamer/weracer-wepower-blanca/weracer-wepower-blanca_1.jpg",
@@ -97,7 +97,7 @@ productList.push(new Producto(
     ], "Gamer")
 );
 productList.push(new Producto(
-    4, "Silla Weracer Mod Wepower Roja", "Rojo", 21,
+    4, "Silla Weracer Wepower Roja", "Rojo", 21,
     [
         {
             src: "/img/gamer/weracer-wepower-roja/weracer-wepower-roja_1.jpg",
