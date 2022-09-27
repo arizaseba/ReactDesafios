@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Button, Modal, Toast, ToastContainer } from 'react-bootstrap'
+import { Button, Container, Modal, Toast, ToastContainer } from 'react-bootstrap'
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import { getItem } from '../app/api';
@@ -35,7 +35,7 @@ const ItemDetail = () => {
     const [count, setCount] = useState(1);
 
     return (
-        <>
+        <Container className='my-4'>
             <div className="details border rounded-4 shadow-lg">
                 <div className="big-img">
                     <img src={image.src} alt={image.alt} />
@@ -93,7 +93,7 @@ const ItemDetail = () => {
                     <Toast.Body>¡Producto agregado al carrito de compras!</Toast.Body>
                 </Toast>
             </ToastContainer>
-        </>
+        </Container>
     )
 }
 

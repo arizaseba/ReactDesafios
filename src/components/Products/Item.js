@@ -4,9 +4,11 @@ import { MdArticle } from 'react-icons/md';
 
 function Item({ item }) {
     return (
-        <Card className='shadow p-2' style={{ height: 600}}>
+        <Card className='shadow p-2' style={{ height: 600 }}>
             <div className='overflow-hidden'>
-                <Card.Img style={{ height: 400, objectFit: "cover" }} variant="top" src={item.img[0].src} alt={item.img[0].alt} />
+                <a href={"/item/" + item.id} >
+                    <Card.Img style={{ height: 400, objectFit: "cover" }} variant="top" src={item.img[0].src} alt={item.img[0].alt} />
+                </a>
             </div>
             <Card.Body className='d-flex flex-column justify-content-between'>
                 <Card.Title>{item.title}</Card.Title>

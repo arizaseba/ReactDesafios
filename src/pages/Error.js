@@ -1,6 +1,10 @@
+import { Container } from "react-bootstrap"
+
 const Error = () => {
     return (
-        <div>Página no encontrada</div>
+        <Container className='my-4'>
+            <div>Página no encontrada</div>
+        </Container>
     )
 }
 
