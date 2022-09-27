@@ -1,4 +1,4 @@
-import Provider from '../components/app/Provider';
+import Provider from '../components/Context/Provider';
 import Cart from '../components/Cart/Cart';
 
 const CartPage = () => {

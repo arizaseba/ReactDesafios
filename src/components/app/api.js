@@ -261,31 +261,6 @@ export const getItem = (id) => {
     return productList.find(i => i.id === id);
 }
 
-const cartList = [];
-
-export const getCartList = new Promise((resolve) =>
-    setTimeout(() => {
-        resolve(cartList)
-    }, 1500)
-);
-
-export const addToCart = (item, cantidad) => {
-    // id, title, color, stock, img, price, desc, category
-    let prod = new Producto(item.id, item.title, item.color, item.stock, item.img, item.price, item.desc, item.category);
-    let prodCart = cartList.find(s => s.id === item.id)
-    if (prodCart) {
-        prodCart.cantidad += cantidad
-    }
-    else {
-        prod.cantidad = cantidad
-        cartList.push(prod)
-    }
-    document.getElementById("cart_count").innerHTML = cartList.length;
-    console.log("cartList: ", cartList);
-};
-
-
-
 //////////////// Firebase ////////////////
 // CREATE ////////////////
 export const createItem = async (obj) => {

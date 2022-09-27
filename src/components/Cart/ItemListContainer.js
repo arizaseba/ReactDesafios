@@ -1,22 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Badge, Button, Form, ListGroup } from 'react-bootstrap';
+import CartContext from '../Context/CartContext';
 
-function ItemListContainer({ cartList }) {
-    const listItems = cartList.map((p, index) =>
-        <ListGroup.Item key={index} as="li" className="d-flex justify-content-between align-items-center">
-            <div className='d-flex align-items-center'>
-                <img src={p.img[0].src} alt={p.img[0].alt} style={{ width: 90 }} />
-                <div>
+function ItemListContainer() {
+    const { cartItems } = useContext(CartContext);
+
+    const listItems = cartItems.map((p, index) =>
+        <ListGroup.Item key={index} as="li">
+            <div className="row align-items-center">
+                <div className="col-2">
+                    <img src={p.img[0].src} alt={p.img[0].alt} style={{ width: 90 }} />
+                </div>
+                <div className="col-5">
                     <h5 className='text-uppercase'>{p.title}</h5>
                     <Form.Text>Color: {p.color}</Form.Text>
                 </div>
+                <div className="col-2 text-center">
+                    <Badge className='p-2' bg="primary">{p.amount > 1 ? p.amount + " unidades" : p.amount + " unidad"}</Badge>
+                </div>
+                <div className="col-3 text-end">
+                    <span className='fs-2 fw-light'>$ {parseInt(p.price * p.amount).toLocaleString()}</span>
+                </div>
             </div>
-            <Badge className='p-2' bg="primary">{p.cantidad > 1 ? p.cantidad + " unidades" : p.cantidad + " unidad"}</Badge>
-            <p className='fs-2 fw-light'>$ {parseInt(p.price * p.cantidad).toLocaleString()}</p>
         </ListGroup.Item>
     );
 
-    if (cartList.length > 0) {
+    if (cartItems.length > 0) {
         return (
             <ListGroup variant="flush">{listItems}</ListGroup>
         )

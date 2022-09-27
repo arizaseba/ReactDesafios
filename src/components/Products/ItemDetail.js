@@ -1,29 +1,37 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Modal, Toast, ToastContainer } from 'react-bootstrap'
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
-import { addToCart, getItem } from '../app/api';
+import { getItem } from '../app/api';
 import '../../css/ItemDetail.css';
 import ItemCount from './ItemCount';
+import CartContext from '../Context/CartContext';
 
 const ItemDetail = () => {
+    // context
+    const { addItemCart } = useContext(CartContext);
+
+    // parametros
     const { id } = useParams();
     const item = getItem(parseInt(id));
 
-    const [stock, setStock] = useState(item.stock);
+    // contador para stock del item
+    const [stock, setStock] = useState(item.stock)
 
+    // mostrar mensaje "sin stock"
     const [showMsg, setShowMsg] = useState(false);
     const closeMsg = () => setShowMsg(false);
     const openMsg = () => setShowMsg(true);
 
+    // mostrar mensaje "agregado al carrito"
     const [showToast, setShowToast] = useState(false);
     const closeToast = () => setShowToast(false);
     const openToast = () => setShowToast(true);
 
-    const descItem = item.desc.map((desc, ix) => <li key={ix}>{desc}</li>)
-
+    // imagen principal
     const [image, setImage] = useState(item.img[0]);
 
+    // contador para cantidad de items a agregar
     const [count, setCount] = useState(1);
 
     return (
@@ -38,7 +46,7 @@ const ItemDetail = () => {
                         <h3 className="display-4">$ {parseFloat(item.price).toLocaleString()}</h3>
                     </div>
                     <p>Color: {item.color}</p>
-                    Detalle: <ul className=''>{descItem}</ul>
+                    Detalle: <ul className=''>{item.desc.map((desc, ix) => <li key={ix}>{desc}</li>)}</ul>
 
                     <div className="thumb">
                         {item.img.map((img, ix) => (
@@ -52,13 +60,13 @@ const ItemDetail = () => {
                                 setStock(stock - count);
                                 item.minStock(count);
                                 console.log(item.title + " - Stock: " + item.stock);
-                                addToCart(item, count);
+                                addItemCart(item, count);
                                 openToast();
                             }
                             else {
                                 openMsg();
                             }
-                        }}                        >
+                        }}>
                         <MdAddShoppingCart /> Agregar al carrito
                     </Button>
                 </div>
