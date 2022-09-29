@@ -1,10 +1,11 @@
 import { Container } from 'react-bootstrap';
+import Banner from '../components/Banner/Banner';
 import ItemList from '../components/Products/ItemList';
 
 const Home = () => {
     return (
         <>
-            <img src="banner.png" alt="Banner Weracer" style={{ height: 300, width: "100%", objectFit: 'cover' }} />
+            <Banner imgSrc={"banner.png"} imgAlt={"Weracer Banner"} />
             <Container className='my-4'>
                 <ItemList />
             </Container>

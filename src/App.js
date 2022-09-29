@@ -1,4 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import "./css/styles.css"
 import Router from './components/app/Router';
 import { CartProvider } from './components/Context/CartContext';
 

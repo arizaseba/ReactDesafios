@@ -62,8 +62,8 @@ export const CartProvider = ({ children }) => {
         }
     }
 
-    const clear = () => {
-        localStorage.clear();
+    const clearCart = () => {
+        setCartItems([]);
     }
 
     return (
@@ -72,7 +72,7 @@ export const CartProvider = ({ children }) => {
             itemInCart,
             addItemCart,
             removeItemCart,
-            clear
+            clearCart
         }}>
             {children}
         </CartContext.Provider>

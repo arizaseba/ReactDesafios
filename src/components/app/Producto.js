@@ -13,8 +13,4 @@ export default class Producto {
     minStock(cantidad) {
         this.stock -= cantidad;
     }
-
-    setCartCantidad(cantidad){
-        this.cantidad = cantidad;
-    }
 }

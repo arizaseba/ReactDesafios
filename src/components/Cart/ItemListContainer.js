@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Badge, Button, Form, ListGroup } from 'react-bootstrap';
+import { Badge, Button, Form, ListGroup, Modal } from 'react-bootstrap';
 import CartContext from '../Context/CartContext';
 
 function ItemListContainer() {
@@ -32,9 +32,9 @@ function ItemListContainer() {
     }
     else {
         return (
-            <div className='d-flex flex-column align-items-center'>
-                <div className='display-4'>Tu carrito está vacío</div>
-                <Button className='mt-3' href="/">Ver productos</Button>
+            <div className='text-center p-5'>
+                <div className='display-5'>Tu carrito está vacío</div>
+                <div className='fs-4 text-muted'>¿No sabés qué comprar? ¡Contactanos para asesorarte!</div>
             </div>
         )
     }

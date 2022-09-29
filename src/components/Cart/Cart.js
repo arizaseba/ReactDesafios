@@ -3,7 +3,7 @@ import { Button, Form, FormLabel, InputGroup, ListGroup } from 'react-bootstrap'
 import CartContext from '../Context/CartContext';
 
 const Cart = () => {
-    const { cartItems, removeItemCart, addItemCart } = useContext(CartContext);
+    const { cartItems, removeItemCart, addItemCart, clearCart } = useContext(CartContext);
 
     useEffect(() => {
         return () => {
@@ -26,17 +26,11 @@ const Cart = () => {
                     }}>Eliminar
                     </p>
                 </div>
-                <div className="col-2 text-center">
-                    <InputGroup style={{ width: 150 }}>
-                        <Button style={{ width: 40 }} variant="primary" id="button-min" onClick={() => {
-                            removeItemCart(p, 1)
-                            cartItems.reduce((sum, obj) => sum + (obj.price * obj.amount), 0)
-                        }}>-</Button>
-                        <FormLabel className="border d-flex align-items-center justify-content-center m-0" style={{ width: 70, height: 38 }}>{p.amount}</FormLabel>
-                        <Button style={{ width: 40 }} variant="primary" id="button-add" onClick={() => {
-                            p.stock > 0 && addItemCart(p, 1)
-                            cartItems.reduce((sum, obj) => sum + (obj.price * obj.amount), 0)
-                        }}>+</Button>
+                <div className="col-2 d-flex flex-column align-items-center">
+                    <InputGroup className='d-flex justify-content-center'>
+                        <Button variant="dark" id="button-min" onClick={() => { removeItemCart(p, 1); cartItems.reduce((sum, obj) => sum + (obj.price * obj.amount), 0) }}>-</Button>
+                        <FormLabel className="border d-flex align-items-center justify-content-center m-0 px-4">{p.amount}</FormLabel>
+                        <Button variant="dark" id="button-add" onClick={() => { p.stock > 0 && addItemCart(p, 1); cartItems.reduce((sum, obj) => sum + (obj.price * obj.amount), 0) }}>+</Button>
                     </InputGroup>
                     <Form.Text className="text-muted">{p.stock} disponibles</Form.Text>
                 </div>
@@ -51,23 +45,31 @@ const Cart = () => {
         return (
             <ListGroup variant="flush">
                 {listItems}
-                <ListGroup.Item as="li">
-                    <div className="row align-items-center">
-                        <div className="col-10 text-end">
-                            <p className='fs-2'>Total</p>
+                <ListGroup.Item as="li" className='my-4'>
+                    <div className="row display-6 fw-bold">
+                        <div className="col-9 text-end">
+                            <p>Total</p>
                         </div>
-                        <div className="col-2 text-end">
-                            <p className='fs-2'>$ {parseInt(cartItems.reduce((sum, obj) => sum + (obj.price * obj.amount), 0)).toLocaleString()}</p>
+                        <div className="col-3 text-end">
+                            <p>$ {parseInt(cartItems.reduce((sum, obj) => sum + (obj.price * obj.amount), 0)).toLocaleString()}</p>
                         </div>
                     </div>
+                </ListGroup.Item>
+                <ListGroup.Item as="li" className='d-flex flex-row justify-content-end'>.
+                    <Button variant="dark" className='mx-3' onClick={() => { clearCart() }}>Vaciar carrito</Button>
+                    <Button variant="success">Finalizar compra</Button>
                 </ListGroup.Item>
             </ListGroup>
         )
     } else {
         return (
-            <div className='d-flex flex-column align-items-center' >
-                <div className='display-4'>Tu carrito está vacío</div>
-                <Button className='mt-3' href="/">Ver productos</Button>
+            <div className='d-flex flex-column align-items-center justify-content-center text-center' style={{ height: 500 }}>
+                <div className='display-5'>Tu carrito está vacío</div>
+                <div className='fs-4 text-muted'>¿No sabés qué comprar? ¡Contactanos para asesorarte!</div>
+                <div className='d-inline mt-4'>
+                    <Button className='mx-2' href="/contact" variant="dark">Contacto</Button>
+                    <Button className='mx-2' href="/" variant="success">Ver productos</Button>
+                </div>
             </div>
         )
     }

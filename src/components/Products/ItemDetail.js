@@ -54,7 +54,7 @@ const ItemDetail = () => {
                         ))}
                     </div>
                     <ItemCount item={item} count={count} setCount={setCount} />
-                    <Button style={{ width: 200 }}
+                    <Button variant='outline-info'
                         onClick={() => {
                             if (item.stock > 0 && count <= item.stock) {
                                 setStock(stock - count);
@@ -67,7 +67,7 @@ const ItemDetail = () => {
                                 openMsg();
                             }
                         }}>
-                        <MdAddShoppingCart /> Agregar al carrito
+                        <MdAddShoppingCart size={25}/> Agregar al carrito
                     </Button>
                 </div>
             </div>

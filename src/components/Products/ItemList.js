@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { getProducts } from '../app/api';
 import Item from './Item';
 import { PulseLoader } from 'react-spinners';
 
-function ItemList({ addItem, category }) {
+function ItemList({ category }) {
     const [isLoading, setIsLoading] = useState(true);
     const [productos, setProductos] = useState([]);
 
@@ -22,7 +22,9 @@ function ItemList({ addItem, category }) {
 
     if (isLoading) {
         return (
-            <PulseLoader className="position-absolute top-50 start-50 translate-middle" color="#212529" />
+            <Container className='d-flex align-items-center justify-content-center' style={{ height: 500 }}>
+                <PulseLoader color="#202020" />
+            </Container>
         );
     }
     else {
@@ -30,7 +32,7 @@ function ItemList({ addItem, category }) {
         // console.log(productos);
         const listItems = productos.map(p =>
             <Col key={p.id}>
-                <Item item={p} onAdd={addItem} />
+                <Item item={p} />
             </Col>
         );
 

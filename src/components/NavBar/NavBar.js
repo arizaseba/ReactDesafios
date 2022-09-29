@@ -4,7 +4,7 @@ import CartWidget from '../Cart/CartWidget';
 function NavBar() {
     return (
         <header>
-            <Navbar bg="dark" variant="dark" expand="md" className='shadow-sm'>
+            <Navbar bg="dark" variant="dark" expand="md" className='shadow'>
                 <Container>
                     <Navbar.Brand href="/">
                         <img
