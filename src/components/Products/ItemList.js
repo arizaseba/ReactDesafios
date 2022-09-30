@@ -8,18 +8,6 @@ function ItemList({ category }) {
     const [isLoading, setIsLoading] = useState(true);
     const [productos, setProductos] = useState([]);
 
-    // useEffect(() => {
-    //     getProducts
-    //         .then((response) => response)
-    //         .then((data) => {
-    //             if (category)
-    //                 setProductos(data.filter(s => s.category.toLowerCase() === category.toLowerCase()))
-    //             else
-    //                 setProductos(data)
-    //             setIsLoading(false);
-    //         });
-    // }, [category]);
-
     useEffect(() => {
         getItems()
             .then((data) => {
