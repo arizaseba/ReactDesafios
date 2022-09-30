@@ -9,8 +9,4 @@ export default class Producto {
         this.desc = desc
         this.category = category
     }
-
-    minStock(cantidad) {
-        this.stock -= cantidad;
-    }
 }

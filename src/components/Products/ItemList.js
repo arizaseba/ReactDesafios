@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
-import { getProducts } from '../app/api';
+import { getItems } from '../app/api';
 import Item from './Item';
 import { PulseLoader } from 'react-spinners';
 
@@ -8,9 +8,20 @@ function ItemList({ category }) {
     const [isLoading, setIsLoading] = useState(true);
     const [productos, setProductos] = useState([]);
 
+    // useEffect(() => {
+    //     getProducts
+    //         .then((response) => response)
+    //         .then((data) => {
+    //             if (category)
+    //                 setProductos(data.filter(s => s.category.toLowerCase() === category.toLowerCase()))
+    //             else
+    //                 setProductos(data)
+    //             setIsLoading(false);
+    //         });
+    // }, [category]);
+
     useEffect(() => {
-        getProducts
-            .then((response) => response)
+        getItems()
             .then((data) => {
                 if (category)
                     setProductos(data.filter(s => s.category.toLowerCase() === category.toLowerCase()))
