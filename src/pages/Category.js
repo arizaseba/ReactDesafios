@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import Banner from '../components/Banner/Banner';

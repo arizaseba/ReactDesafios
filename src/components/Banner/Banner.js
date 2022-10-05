@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Banner = ({ imgSrc, imgAlt, title }) => {
     if (imgSrc && imgAlt) {
         return (
@@ -10,9 +8,9 @@ const Banner = ({ imgSrc, imgAlt, title }) => {
     }
     else
         return (
-            <div className='d-flex flex-column align-items-center justify-content-center text-primary bg-light shadow' style={{ letterSpacing: 5, height: 175, width: "100%", objectFit: 'cover' }} >
+            <div className='d-flex flex-column align-items-center justify-content-center text-white bg-primary shadow' style={{ letterSpacing: 5, height: 175, width: "100%", objectFit: 'cover' }} >
                 <div className='mb-2 text-uppercase display-3 fw-bold'>{title}</div>
-                <div className='bg-primary' style={{ width: "5%", height: 5}}></div>
+                <div className='bg-white' style={{ width: "5%", height: 5}}></div>
             </div>
         )
 }

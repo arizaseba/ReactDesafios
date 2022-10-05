@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { Badge, Button, Form, ListGroup, Modal } from 'react-bootstrap';
+import { Badge, Form, ListGroup, } from 'react-bootstrap';
 import CartContext from '../Context/CartContext';
 
 function ItemListContainer() {
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, removeItemCart } = useContext(CartContext);
 
     const listItems = cartItems.map((p, index) =>
         <ListGroup.Item key={index} as="li">
@@ -14,6 +14,11 @@ function ItemListContainer() {
                 <div className="col-5">
                     <h5 className='text-uppercase'>{p.title}</h5>
                     <Form.Text>Color: {p.color}</Form.Text>
+                    <p role="button" onClick={() => {
+                        removeItemCart(p, p.amount)
+                        cartItems.reduce((sum, obj) => sum + (obj.price * obj.amount), 0)
+                    }}>Eliminar
+                    </p>
                 </div>
                 <div className="col-2 text-center">
                     <Badge className='p-2' bg="primary">{p.amount > 1 ? p.amount + " unidades" : p.amount + " unidad"}</Badge>

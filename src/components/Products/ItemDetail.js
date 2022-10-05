@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Button, Container, Modal, Toast, ToastContainer } from 'react-bootstrap'
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
-import { getItemById } from '../app/api';
+import { getItemById } from '../app/dbProductos';
 import '../../css/ItemDetail.css';
 import ItemCount from './ItemCount';
 import CartContext from '../Context/CartContext';
@@ -11,7 +11,7 @@ import { PulseLoader } from 'react-spinners';
 
 const ItemDetail = () => {
     // context
-    const { addItemCart } = useContext(CartContext);
+    const { addItemCart, itemInCart } = useContext(CartContext);
 
     // parametros
     const { id } = useParams();
@@ -44,12 +44,12 @@ const ItemDetail = () => {
     useEffect(() => {
         getItemById(id)
             .then((data) => {
-                setItem(data)
-                setStock(data.stock)
+                setItem({ ...data, id: id })
+                setStock(itemInCart(id) ? itemInCart(id).stock : data.stock)
                 setImage(data.img[0])
                 setIsLoading(false);
             })
-    }, [id]);
+    }, [id, itemInCart]);
 
     if (isLoading) {
         return (
@@ -78,10 +78,10 @@ const ItemDetail = () => {
                                 <img className={image.src === img.src ? "active" : ""} key={ix} src={img.src} alt={img.alt} onMouseOver={() => setImage(img)}></img>
                             ))}
                         </div>
-                        <ItemCount item={item} count={count} setCount={setCount} />
-                        <Button variant='outline-info'
+                        <ItemCount stock={stock} count={count} setCount={setCount} />
+                        <Button variant='success'
                             onClick={() => {
-                                if (item.stock > 0 && count <= item.stock) {
+                                if (stock > 0 && count <= stock) {
                                     setStock(stock - count);
                                     item.stock -= count;
                                     console.log(item.title + " - Stock: " + item.stock);
@@ -92,7 +92,7 @@ const ItemDetail = () => {
                                     openMsg();
                                 }
                             }}>
-                            <MdAddShoppingCart size={25} /> Agregar al carrito
+                            <MdAddShoppingCart size={"1rem"} /> Agregar al carrito
                         </Button>
                     </div>
                 </div>
@@ -103,12 +103,11 @@ const ItemDetail = () => {
                     </Modal.Header>
                     <Modal.Body>Lo siento, la cantidad a comprar debe ser menor que el stock del artículo</Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={closeMsg}>
+                        <Button variant="primary" onClick={closeMsg}>
                             Cerrar
                         </Button>
                     </Modal.Footer>
                 </Modal>
-
 
                 <ToastContainer className="p-3" position="top-end" containerPosition="fixed">
                     <Toast bg='light' animation onClose={() => closeToast(false)} show={showToast} delay={3000} autohide>

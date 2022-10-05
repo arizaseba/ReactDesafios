@@ -10,12 +10,12 @@ function CartWidget() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, clearCart } = useContext(CartContext);
 
     return (
         <>
             <Button onClick={handleShow} className="my-2 d-flex align-items-center">
-                <MdShoppingCart size={25}/>
+                <MdShoppingCart size={"1rem"} />
                 <div id="cart_count" className="ms-2">{cartItems && cartItems.length}</div>
             </Button>
 
@@ -29,7 +29,13 @@ function CartWidget() {
                 <Modal.Footer>
                     {
                         cartItems.length > 0 ?
-                            <Button href="/cart" variant="success">Comprar</Button> :
+                            <>
+                                <div className='row'>
+                                    <Button variant="dark" onClick={clearCart}>Vaciar carrito</Button>
+                                </div><div className='row'>
+                                    <Button href="/cart" variant="success">Comprar</Button>
+                                </div>
+                            </> :
                             <>
                                 <div className='row'>
                                     <Button href="/contact" variant="dark">Contacto</Button>

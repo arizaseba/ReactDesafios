@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import Producto from "../app/Producto";
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState(() => {
@@ -21,13 +20,12 @@ export const CartProvider = ({ children }) => {
 
     const addItemCart = (item, cantidad) => {
         // id, title, color, stock, img, price, desc, category
-        let prod = new Producto(item.id, item.title, item.color, item.stock, item.img, item.price, item.desc, item.category);
-        const inCart = itemInCart(prod.id);
+        const inCart = itemInCart(item.id);
 
         if (inCart) {
             setCartItems(
                 cartItems.map(p => {
-                    if (p.id === prod.id) {
+                    if (p.id === item.id) {
                         // console.log({ ...inCart })
                         return { ...inCart, amount: inCart.amount + cantidad, stock: inCart.stock - cantidad };
                     } else {
@@ -36,7 +34,7 @@ export const CartProvider = ({ children }) => {
                 })
             )
         } else {
-            setCartItems([...cartItems, { ...prod, amount: cantidad }]);
+            setCartItems([...cartItems, { ...item, amount: cantidad }]);
         }
     }
 

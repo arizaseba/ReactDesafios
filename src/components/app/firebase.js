@@ -18,5 +18,5 @@ export const db = getFirestore();
 export const storage = getStorage(app);
 export const auth = getAuth(app);
 
-// Si descomentas la siguiente línea, cuando mientras que el usuario no se desloguee expresamente o cierre el navegador, permanecerá logueado y podremos acceder a su id desde cualquier página
+// Si descomentas la siguiente línea, mientras el usuario no se desloguee expresamente o cierre el navegador, permanecerá logueado y podremos acceder a su id desde cualquier página
 setPersistence(auth, browserLocalPersistence);
