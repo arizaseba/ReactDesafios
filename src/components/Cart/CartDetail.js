@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Badge, Form, ListGroup, } from 'react-bootstrap';
 import CartContext from '../Context/CartContext';
 
-function ItemListContainer() {
+function CartDetail() {
     const { cartItems, removeItemCart } = useContext(CartContext);
 
     const listItems = cartItems.map((p, index) =>
@@ -45,4 +45,4 @@ function ItemListContainer() {
     }
 }
 
-export default ItemListContainer
+export default CartDetail

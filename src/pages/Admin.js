@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap"
-import { createItem, getItems } from "../components/app/dbProductos"
+import { createItem, getItems } from "../components/app/dbProducts"
 
 // pagina para subir productos
 const Admin = () => {

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { MdShoppingCart } from 'react-icons/md'
 import { Button, Modal } from 'react-bootstrap';
-import ItemListContainer from './ItemListContainer';
+import CartDetail from './CartDetail';
 import CartContext from '../Context/CartContext';
 
 
@@ -24,7 +24,7 @@ function CartWidget() {
                     <Modal.Title>Carrito de Compras</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ItemListContainer show={show} handleClose={handleClose} />
+                    <CartDetail show={show} handleClose={handleClose} />
                 </Modal.Body>
                 <Modal.Footer>
                     {

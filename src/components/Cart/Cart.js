@@ -119,10 +119,9 @@ const Cart = () => {
                             </Row>
                             <div className='d-flex justify-content-end'>
                                 <Button variant="dark" onClick={handleClose}>Cancelar</Button>
-                                <Button className='ms-2' variant="success" type='submit' onClick={() => {
+                                <Button className='ms-2' variant="success" type='submit' onClick={async () => {
                                     if (buyer.name && buyer.phone && buyer.email) {
-                                        createOrder(buyer).then(data => document.location = `/checkout/${data}`);
-                                        clearCart()
+                                        await createOrder(buyer).then(data => document.location = `/checkout/${data}`)
                                     }
                                 }}>Confirmar</Button>
                             </div>
@@ -131,7 +130,8 @@ const Cart = () => {
                 </Modal>
             </>
         )
-    } else {
+    }
+    else {
         return (
             <div className='d-flex flex-column align-items-center justify-content-center text-center' style={{ height: 500 }}>
                 <div className='display-5'>Tu carrito está vacío</div>

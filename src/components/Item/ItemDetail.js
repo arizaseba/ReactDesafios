@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Button, Container, Modal, Toast, ToastContainer } from 'react-bootstrap'
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
-import { getItemById } from '../app/dbProductos';
-import '../../css/ItemDetail.css';
+import { getItemById } from '../app/dbProducts';
+import '../app/ItemDetail.css';
 import ItemCount from './ItemCount';
 import CartContext from '../Context/CartContext';
 import { PulseLoader } from 'react-spinners';

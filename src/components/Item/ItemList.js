@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap';
-import { getItems } from '../app/dbProductos';
+import { getItems } from '../app/dbProducts';
 import Item from './Item';
 import { PulseLoader } from 'react-spinners';
 

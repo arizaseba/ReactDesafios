@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap';
 import Banner from '../components/Banner/Banner';
-import ItemList from '../components/Products/ItemList';
+import ItemList from '../components/Item/ItemList';
 
 const Home = () => {
     return (

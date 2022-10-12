@@ -1,22 +1,33 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { PulseLoader } from "react-spinners";
 import { getOrderById } from "../app/dbBuyer";
+import CartContext from "../Context/CartContext";
 
 const Checkout = () => {
-    // parametros
     const { id } = useParams();
-
+    const { clearCart } = useContext(CartContext);
     const [order, setOrder] = useState()
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         getOrderById(id).then(data => {
             setOrder(data);
+            setIsLoading(false);
         });
 
     }, [id])
 
-    if (order) {
+    if (isLoading) {
+        return (
+            <Container className='d-flex align-items-center justify-content-center' style={{ height: 500 }}>
+                <PulseLoader color="#202020" />
+            </Container>
+        );
+    }
+    else if (order) {
+        clearCart();
         return (
             <Container className="d-flex flex-column align-items-center text-center p-5">
                 <h1>{order.name}</h1>

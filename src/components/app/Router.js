@@ -3,7 +3,7 @@ import Home from '../../pages/Home';
 import Contact from '../../pages/Contact';
 import Layout from './Layout';
 import Error from '../../pages/Error';
-import ItemDetail from '../Products/ItemDetail';
+import ItemDetail from '../Item/ItemDetail';
 import Category from '../../pages/Category';
 import CartPage from '../../pages/CartPage';
 import Admin from '../../pages/Admin';

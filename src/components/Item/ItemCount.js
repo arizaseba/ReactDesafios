@@ -1,5 +1,5 @@
 import { Button, Form, FormLabel, InputGroup } from "react-bootstrap"
-import '../../css/ItemDetail.css';
+import "../app/ItemDetail.css"
 
 const ItemCount = ({ stock, count, setCount }) => {
     return (

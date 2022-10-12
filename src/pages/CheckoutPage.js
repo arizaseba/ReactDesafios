@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap"
-import Checkout from "../components/Cart/Checkout"
+import Checkout from "../components/Checkout/Checkout"
 
 const CheckoutPage = () => {
     return (
